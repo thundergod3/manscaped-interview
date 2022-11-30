@@ -6,7 +6,6 @@ import React, {
   useMemo,
   useState,
 } from "react";
-import { GetServerSideProps } from "next";
 import Image from "next/image";
 import dayjs from "dayjs";
 
@@ -21,7 +20,7 @@ import NormalText from "components/NormalText";
 import Table from "components/Table";
 import CancelBodyModal from "pageComponents/CancelBodyModal";
 import RefundBodyModal from "pageComponents/RefundBodyModal";
-import ResendConfirmationBodyModal from "pageComponents/ResendTrackingBodyModal";
+import ResendConfirmationBodyModal from "pageComponents/ResendConfirmationBodyModal";
 import ResendTrackingBodyModal from "pageComponents/ResendTrackingBodyModal";
 import { TEXT_POSITION } from "components/NormalText/normalText.schema";
 
@@ -40,7 +39,17 @@ import { ORDER_DATA } from "shared/constants";
 const columnData = [
   {
     columnId: "image",
-    render: () => <Image src={imageBall} alt="Ball Image" objectFit="cover" />,
+    center: true,
+    render: () => (
+      <Image
+        src={imageBall}
+        alt="Ball Image"
+        objectFit="cover"
+        style={{
+          margin: "auto",
+        }}
+      />
+    ),
   },
   {
     columnId: "productName",
@@ -50,6 +59,7 @@ const columnData = [
   {
     columnId: "qty",
     label: "Quantity",
+    center: true,
   },
   {
     columnId: "price",
@@ -165,7 +175,7 @@ const App: React.FC = (): ReactElement => {
             <NormalText
               text="Shipping Address"
               bold
-              textTransform="capitalize"
+              textTransform="uppercase"
             />
             <NormalText text={orderAddress?.name} />
             <Box

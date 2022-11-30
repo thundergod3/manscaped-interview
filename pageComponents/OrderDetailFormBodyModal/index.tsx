@@ -37,6 +37,8 @@ const OrderDetailFormBodyModal: React.FC<OrderDetailFormBodyModalProps> = ({
       setModalState({
         ...rest,
         data: orderDetail,
+        isDisabled:
+          !orderDetail || !orderDetail?.price || !orderDetail?.productName,
       });
     }
   }, [data, orderDetail, rest, setModalState]);

@@ -1,9 +1,9 @@
 import React, { ReactElement } from "react";
 import { Thead, Tr, Th } from "@chakra-ui/react";
 
-import NormalText from "components/NormalText";
-
 import { TableHeadProps } from "./tableHead.schema";
+
+import NormalText from "components/NormalText";
 
 const TableHead: React.FC<TableHeadProps> = ({ columnData }): ReactElement => (
   <Thead>
@@ -19,14 +19,15 @@ const TableHead: React.FC<TableHeadProps> = ({ columnData }): ReactElement => (
           }}
           px={{
             base: 2,
-            md: 6,
+            md: 4,
           }}>
           {column?.label && (
             <NormalText
               text={column?.label}
               color={column?.textColor || "text.grey.600"}
-              textTransform="capitalize"
+              textTransform="uppercase"
               bold
+              margin={column?.center ? "auto" : 0}
             />
           )}
         </Th>

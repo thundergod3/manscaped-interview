@@ -34,6 +34,7 @@ interface ModalState {
   title?: string;
   data?: any;
   redirectTo?: string;
+  isDisabled?: boolean;
 }
 
 const useModal = ({
@@ -56,6 +57,7 @@ const useModal = ({
     title: "",
     data: null,
     redirectTo: "",
+    isDisabled: false,
   });
 
   const [checkMobileView] = useMediaQuery("(max-width: 48em)");
@@ -135,14 +137,18 @@ const useModal = ({
               <ModalFooter>
                 {usingCancelBtn && (
                   <Button
-                    variant="ghost"
+                    variant="outline"
                     mr={usingSubmitBtn ? 3 : 0}
-                    onClick={close}>
+                    onClick={close}
+                    borderColor="linkedin.900">
                     {closeText}
                   </Button>
                 )}
                 {usingSubmitBtn && (
-                  <Button colorScheme="blue" type="submit">
+                  <Button
+                    colorScheme="blue"
+                    type="submit"
+                    disabled={modalState?.isDisabled}>
                     {submitText}
                   </Button>
                 )}

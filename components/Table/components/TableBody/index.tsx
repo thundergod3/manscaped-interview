@@ -24,12 +24,13 @@ const TableBody: React.FC<TableBodyProps> = ({
                 textTransform="capitalize"
                 px={{
                   base: 2,
-                  md: 6,
+                  md: 4,
                 }}
                 fontSize={{
                   base: "12px",
                   md: "16px",
-                }}>
+                }}
+                textAlign={column?.center ? "center" : "left"}>
                 {customCell?.(data?.[column?.columnId], data, index) ||
                   data?.[column?.columnId]}
               </Td>
@@ -46,7 +47,7 @@ const TableBody: React.FC<TableBodyProps> = ({
           textTransform="capitalize"
           px={{
             base: 2,
-            md: 6,
+            md: 4,
           }}>
           <NormalText text={footerData?.leftText} fontSizeProps="16px" bold />
         </Td>
@@ -58,7 +59,7 @@ const TableBody: React.FC<TableBodyProps> = ({
           textTransform="capitalize"
           px={{
             base: 2,
-            md: 6,
+            md: 4,
           }}>
           <NormalText text={footerData?.rightText} fontSizeProps="16px" />
         </Td>

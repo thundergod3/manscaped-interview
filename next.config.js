@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  // Fixing Netlify build and using Image from CharkaUI ( next export )
+  // Fixing Netlify build
   images: {
     unoptimized: true,
   },

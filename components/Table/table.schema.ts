@@ -4,6 +4,7 @@ export interface ColumnData {
   widthMobile?: string;
   width?: string;
   textColor?: string;
+  center?: boolean;
   render?: (value?: any, record?: any, index?: number) => any;
 }
 

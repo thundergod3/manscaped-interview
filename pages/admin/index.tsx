@@ -75,7 +75,7 @@ const Admin: React.FC = (): ReactElement => {
   } = useModal({
     modalBody: OrderDetailFormBodyModal,
     handleSubmit: handleOrderDetailForm,
-    submitText: "Update",
+    submitText: "Submit",
   });
 
   const handleOpenDeleteOrder = useCallback(
@@ -126,8 +126,16 @@ const Admin: React.FC = (): ReactElement => {
     () => [
       {
         columnId: "image",
-        render: (image: any) => (
-          <Image src={imageBall} alt="Ball Image" objectFit="cover" />
+        center: true,
+        render: () => (
+          <Image
+            src={imageBall}
+            alt="Ball Image"
+            objectFit="cover"
+            style={{
+              margin: "auto",
+            }}
+          />
         ),
       },
       {
@@ -138,7 +146,9 @@ const Admin: React.FC = (): ReactElement => {
       {
         columnId: "qty",
         label: "Quantity",
-        width: "120px",
+        width: "130px",
+        center: true,
+        render: (qty: number) => <Flex justifyContent="center">{qty}</Flex>,
       },
       {
         columnId: "price",
@@ -169,6 +179,14 @@ const Admin: React.FC = (): ReactElement => {
       },
     ],
     [handleOpenDeleteOrder, handleOpenOrderDetailForm]
+  );
+  const isDisabled = useMemo(
+    () =>
+      !orderList?.length ||
+      !orderAddress ||
+      !orderAddress?.name ||
+      !orderAddress?.address,
+    [orderAddress, orderList?.length]
   );
 
   useEffect(() => {
@@ -206,6 +224,7 @@ const Admin: React.FC = (): ReactElement => {
                 name="name"
                 value={orderAddress?.name}
                 onChange={handleChangeOrderAddress}
+                isRequired
               />
             </Box>
             <InputField
@@ -213,10 +232,12 @@ const Admin: React.FC = (): ReactElement => {
               name="address"
               value={orderAddress?.address}
               onChange={handleChangeOrderAddress}
+              isRequired
             />
           </Box>
           <Flex justifyContent="center">
             <Button
+              disabled={isDisabled}
               background="blue.500"
               color="white"
               onClick={handleSubmitOrderData}>
