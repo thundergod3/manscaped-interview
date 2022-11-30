@@ -16,14 +16,14 @@ import useModal from "hooks/useModal";
 import useNotification from "hooks/useNotification";
 
 import { OrderAddress, OrderItem } from "shared/schemas";
+import { ORDER_DATA } from "shared/constants";
 
 import Table from "components/Table";
 import OrderDetailFormBodyModal from "pageComponents/OrderDetailFormBodyModal";
 import TitleText from "components/TitleText";
 import InputField from "components/InputField";
 
-import { AdminContainer, AdminTableContainer } from "./admin.styles";
-import { ORDER_DATA } from "shared/constants";
+import { AdminContainer, AdminTableContainer } from "pageStyles/admin.styles";
 
 const Admin: React.FC = (): ReactElement => {
   const [orderList, setOrderList] = useState<OrderItem[]>([]);
@@ -229,12 +229,6 @@ const Admin: React.FC = (): ReactElement => {
       {DialogOrderDetailForm(closeOrderDetailForm)}
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    props: {},
-  };
 };
 
 export default Admin;

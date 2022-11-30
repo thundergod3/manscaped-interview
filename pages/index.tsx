@@ -34,7 +34,7 @@ import {
   AppActionContainer,
   ActionButton,
   AppContainer,
-} from "./index.styles";
+} from "pageStyles/index.styles";
 import { ORDER_DATA } from "shared/constants";
 
 const columnData = [
@@ -223,12 +223,6 @@ const App: React.FC = (): ReactElement => {
       {DialogResendTracking(closeResendTracking)}
     </>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async () => {
-  return {
-    props: {},
-  };
 };
 
 export default App;
